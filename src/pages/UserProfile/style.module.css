@@ -1,0 +1,110 @@
+.userPage {
+  padding-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  max-width: 1100px;
+  background-color: #224957;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.container:not(:last-child) {
+  margin-right: 30px;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.avatar > * {
+  margin-right: 5px;
+  color: rgb(223, 222, 222);
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.user__karma {
+  color: #cbcecf;
+}
+
+.user__counter > * {
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+
+.text {
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.user__karma.number {
+  color: #7aa600;
+}
+
+.user__raiting.number {
+  color: #cd66cd;
+}
+
+.nameBar > * {
+ padding-bottom: 5px;
+}
+
+.user__name {
+  margin: 0;
+  font-size: 20px;
+}
+
+.user__name.nickname {
+  font-size: 15px;
+}
+
+.user__about > * {
+  margin: 10px 0;
+}
+
+.info {
+  max-width: 300px;
+  width: 280px;
+  background-color: #224957;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.title {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: #cbcecf solid .5px;
+}
+
+.table__list {
+  padding: 0;
+  list-style: none;
+}
+
+.table__item {
+  display: flex;
+  /* justify-content: space-between; */
+}
+
+.table__item:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.table__name, 
+.table__info {
+  margin: 0;
+  font-size: 13px;
+}
+
+.table__name {
+  flex-basis: 130px;
+  padding-right: 10px;
+  font-weight: 700;
+}

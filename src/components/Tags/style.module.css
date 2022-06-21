@@ -1,0 +1,12 @@
+.card__tags > * {
+  margin-right: 10px;
+  font-size: 12px;
+  padding: 2px;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.card__tags > *:hover {
+  color: #7079b4;
+  transition: .5s;
+}
