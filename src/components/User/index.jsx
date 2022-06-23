@@ -1,7 +1,6 @@
-import React from 'react';
+import React from 'react'
 import PropTypes from 'prop-types'
-
-import classes from './style.module.css';
+import classes from './style.module.css'
 
 function UserBar(props) {
   const {
@@ -18,12 +17,13 @@ function UserBar(props) {
 
 UserBar.propTypes = {
   src: PropTypes.string,
-  userName: PropTypes.string.isRequired,
+  userName: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
 UserBar.defaultProps = {
+  userName: '',
   src: null,
   width: 20,
   height: 20,

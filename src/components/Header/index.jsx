@@ -1,13 +1,13 @@
-import React from 'react';
-import SearchIcon from '../SvgIcons/Search';
-import UserIcon from '../SvgIcons/User';
-import classes from './style.module.css';
+import React from 'react'
+import SearchIcon from '../SvgIcons/Search'
+import UserIcon from '../SvgIcons/User'
+import classes from './style.module.css'
 
 function Header() {
   return (
     <header className={classes.header}>
       <div className={classes.inner}>
-        <a href="/" className={classes.logo}>
+        <a href="/main-page" className={classes.logo}>
           <h1 className={classes.logo__title}>Home</h1>
         </a>
         <div className={classes.search}>

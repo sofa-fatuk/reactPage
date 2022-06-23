@@ -1,9 +1,8 @@
-import React from 'react';
-import Header from '../../components/Header';
-import User from '../../components/User';
-import { getClassNames } from '../../helpers';
-
-import classes from './style.module.css';
+import React from 'react'
+import Header from '../../components/Header'
+import UserBar from '../../components/User'
+import { getClassNames } from '../../helpers'
+import classes from './style.module.css'
 
 function UserProfile() {
   return (
@@ -13,7 +12,7 @@ function UserProfile() {
         <div className={classes.container}>
           <div className={classes.user}>
             <div className={classes.avatar}>
-              <User
+              <UserBar
                 height={50}
                 width={50}
                 src="https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png"

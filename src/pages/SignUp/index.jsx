@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Button from '../../components/Button';
-import Input from '../../components/Input';
-import Form from '../../components/Form';
-import Link from '../../components/Link';
-import { signUpUser } from '../../api/user';
-import classes from '../../styles/shared.module.css';
+import React, { useState, useEffect } from 'react'
+import Button from '../../components/Button'
+import Input from '../../components/Input'
+import Form from '../../components/Form'
+import Link from '../../components/Link'
+import { signUpUser } from '../../api/user'
+import classes from '../../styles/shared.module.css'
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -17,6 +17,7 @@ function SignUp() {
     if (error) {
       return { borderColor: 'rgba(255, 0, 0, 0.5)' };
     }
+    return null
   }
 
   const onChangeEmail = (event) => {

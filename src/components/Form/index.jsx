@@ -1,5 +1,6 @@
-import React from 'react';
-import classes from './style.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classes from './style.module.css'
 
 function Form(props) {
   const { onSubmit, elements } = props;
@@ -16,6 +17,10 @@ function Form(props) {
   )
 }
 
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  elements: PropTypes.arrayOf(PropTypes.node).isRequired,
+}
 // Прочитать про вывод массивов в реакте
 
 export default Form

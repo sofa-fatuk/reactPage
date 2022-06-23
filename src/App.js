@@ -1,17 +1,15 @@
 import './App.css';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from 'react-router-dom';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import MainPage from './pages/MainPage';
 import UserProfile from './pages/UserProfile';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from 'react-router-dom';
-
 
 export function App() {
-
   return (
     <BrowserRouter>
       <Routes>

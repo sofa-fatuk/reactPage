@@ -1,12 +1,13 @@
-import * as React from "react"
+import * as React from 'react'
+import PropTypes from 'prop-types'
 
-const UserIcon = (props) => {
-  const { width = 20, hieght = 20, fill = "#fff" } = props; 
+function UserIcon(props) {
+  const { width, height, fill } = props;
 
   return (
     <svg
       width={width}
-      height={hieght}
+      height={height}
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -17,6 +18,18 @@ const UserIcon = (props) => {
       />
     </svg>
   )
+}
+
+UserIcon.propTypes = {
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  fill: PropTypes.string,
+}
+
+UserIcon.defaultProps = {
+  width: 20,
+  height: 20,
+  fill: '#fff',
 }
 
 export default UserIcon

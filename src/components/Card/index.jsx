@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '../Button'
-import User from '../User'
+import UserBar from '../User'
 import Tags from '../Tags'
 import classes from './style.module.css'
 import { getDateString } from '../../helpers'
@@ -20,7 +20,7 @@ function Card(props) {
       <div className={classes.article}>
         <div className={classes.userBar}>
           <div className={classes.avatar}>
-            <User
+            <UserBar
               src={item.creator.avatarUrl}
               userName={item.creator.userName}
             />

@@ -1,13 +1,13 @@
 import * as React from 'react'
-// width, height, fill - передается изх пропсов
-// но дефолтные значения такие как сейчас
+import PropTypes from 'prop-types'
+
 function SearchIcon(props) {
-  const { width = 24, hieght = 24, fill = '#fff' } = props;
+  const { width, height, fill } = props;
 
   return (
     <svg
       width={width}
-      height={hieght}
+      height={height}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
@@ -18,6 +18,18 @@ function SearchIcon(props) {
       />
     </svg>
   )
+}
+
+SearchIcon.propTypes = {
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  fill: PropTypes.string,
+}
+
+SearchIcon.defaultProps = {
+  width: 24,
+  height: 24,
+  fill: '#fff',
 }
 
 export default SearchIcon

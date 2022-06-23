@@ -1,5 +1,6 @@
-import React from 'react';
-import classes from './style.module.css';
+import React from 'react'
+import PropTypes from 'prop-types'
+import classes from './style.module.css'
 
 function Link(props) {
   const { text, href } = props;
@@ -11,6 +12,15 @@ function Link(props) {
       </a>
     </label>
   )
+}
+
+Link.propTypes = {
+  text: PropTypes.string.isRequired,
+  href: PropTypes.string,
+}
+
+Link.defaultProps = {
+  href: '#',
 }
 
 export default Link

@@ -1,5 +1,6 @@
-import React from 'react';
-import classes from './style.module.css';
+import React from 'react'
+import { TAGS_PROP_TYPE } from '../../helpers/propTypes'
+import classes from './style.module.css'
 
 function Tags(props) {
   const { tags } = props
@@ -11,6 +12,10 @@ function Tags(props) {
       ))}
     </div>
   )
+}
+
+Tags.propTypes = {
+  tags: TAGS_PROP_TYPE.isRequired,
 }
 
 export default Tags
