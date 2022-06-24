@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Button from '../Button'
 import UserBar from '../User'
 import Tags from '../Tags'
@@ -19,13 +20,15 @@ function Card(props) {
     <section className={classes.card}>
       <div className={classes.article}>
         <div className={classes.userBar}>
-          <div className={classes.avatar}>
-            <UserBar
-              src={item.creator.avatarUrl}
-              userName={item.creator.userName}
-            />
-            <span className={classes.time}>{getDateString(item.createdAt)}</span>
-          </div>
+          <Link to={`/users/${item.creator.id}`}>
+            <div className={classes.avatar}>
+              <UserBar
+                src={item.creator.avatarUrl}
+                userName={item.creator.userName}
+              />
+              <span className={classes.time}>{getDateString(item.createdAt)}</span>
+            </div>
+          </Link>
         </div>
         <div className={classes.card__content}>
           <h2 className={classes.card__title}>{item.title}</h2>
@@ -35,7 +38,6 @@ function Card(props) {
           <div className={classes.card__text} dangerouslySetInnerHTML={{ __html: item.text }} />
           <div className={classes.card__btn}>
             <Button
-              type="submit"
               value="Читать далее"
             />
           </div>

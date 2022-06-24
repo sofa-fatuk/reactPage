@@ -10,7 +10,7 @@ function UserBar(props) {
   return (
     <div className={classes.avatar}>
       <img className={classes.avatar__img} style={{ width, height }} src={src} alt={`post creator ${userName} avatar`} />
-      <a href="#" className={classes.user__name}>{userName}</a>
+      <span className={classes.user__name}>{userName}</span>
     </div>
   )
 }

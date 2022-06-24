@@ -16,7 +16,7 @@ export function App() {
         <Route path="/" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/main-page" element={<MainPage />} />
-        <Route path="/user" element={<UserProfile />} />
+        <Route path="/users/:id" element={<UserProfile />} />
         <Route
           path="*"
           element={<div>Error</div>}
