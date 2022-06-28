@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import SearchIcon from '../SvgIcons/Search'
-import UserIcon from '../SvgIcons/User'
+import SearchIcon from '../Svgs/Search'
+import UserIcon from '../Svgs/User'
 import classes from './style.module.css'
 import { getCurrentUser } from '../../helpers'
 

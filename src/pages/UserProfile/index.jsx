@@ -1,11 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
+
 import Header from '../../components/Header'
 import UserBar from '../../components/User'
-import { getClassNames, getDateString } from '../../helpers'
+import EditIcon from '../../components/Svgs/Edit'
+import { getClassNames, getDateString, getCurrentUser } from '../../helpers'
+
 import classes from './style.module.css'
 
-const getUser = (id) => id === 'sofa' && ({
+const getUser = (id) => (id === 'sofa' || id === 'alex') && ({
   id,
   avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
   userName: 'mr__Popug96',
@@ -18,7 +21,7 @@ const getUser = (id) => id === 'sofa' && ({
   ],
   createdAt: '2010-01-06T14:48:00.000Z',
   activeTime: '2022-06-23T10:40:00.000Z',
-  raitingCounter: 54.5,
+  ratingCounter: 54.5,
   karmaCounter: 143,
   mainRaiting: 32,
   text: 'Занимаюсь разрушением замков и человеческих судеб, профессионально',
@@ -26,12 +29,11 @@ const getUser = (id) => id === 'sofa' && ({
 
 function UserProfile() {
   const params = useParams()
-  // запрос к BE (как бы)
   const user = getUser(params.id)
-
-  // Добавить проверку, если юзер из getUser совпадает с юзером из localStorage
-  // то добавить карандаш, он ведет на новую страницу с формой информации о себе
-
+  const currentUser = getCurrentUser()
+  const showEdit = currentUser.id === user.id
+  // взять текущего юзера из localStorage
+  // сравнить его с юзером страницы
   return (
     <>
       <Header />
@@ -54,10 +56,13 @@ function UserProfile() {
                     <p className={getClassNames(classes.user__karma, classes.text)}>Карма</p>
                   </div>
                   <div className={classes.user__counter}>
-                    <p className={getClassNames(classes.user__raiting, classes.number)}>
-                      {user.raitingCounter}
+                    <p className={getClassNames(classes.user__rating, classes.number)}>
+                      {user.ratingCounter}
                     </p>
-                    <p className={getClassNames(classes.user__raiting, classes.text)}>Рейтинг</p>
+                    <p className={getClassNames(classes.user__rating, classes.text)}>Рейтинг</p>
+                  </div>
+                  <div className={classes.edit__img}>
+                    {showEdit && <EditIcon />}
                   </div>
                 </div>
                 <div className={classes.nameBar}>
@@ -75,20 +80,22 @@ function UserProfile() {
                 </div>
               </div>
             </div>
-            <div className={classes.info}>
-              <h4 className={classes.info__title}>Информейшн</h4>
-              <ul className={classes.table__list}>
-                <li className={classes.table__item}>
-                  <p className={classes.table__name}>В рейтинге</p>
-                  <p className={classes.table__info}>{`${user.mainRaiting}-ой`}</p>
+            <div className={classes.infoBox}>
+              <div className={classes.infoBox__title}>
+                <span>Информейшн</span>
+              </div>
+              <ul className={classes.infoBox__list}>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>В рейтинге</p>
+                  <p className={classes.infoBox__info}>{`${user.mainRaiting}-ой`}</p>
                 </li>
-                <li className={classes.table__item}>
-                  <p className={classes.table__name}>Зарегистрирован</p>
-                  <p className={classes.table__info}>{getDateString(user.createdAt)}</p>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>Зарегистрирован</p>
+                  <p className={classes.infoBox__info}>{getDateString(user.createdAt)}</p>
                 </li>
-                <li className={classes.table__item}>
-                  <p className={classes.table__name}>Активность</p>
-                  <p className={classes.table__info}>{getDateString(user.activeTime)}</p>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>Активность</p>
+                  <p className={classes.infoBox__info}>{getDateString(user.activeTime)}</p>
                 </li>
               </ul>
             </div>
