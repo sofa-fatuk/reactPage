@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 export const USER_PROP_TYPE = PropTypes.shape({
   avatarUrl: PropTypes.string,
   userName: PropTypes.string,
+  id: PropTypes.string,
 })
 
 export const TAG_PROP_TYPE = PropTypes.shape({

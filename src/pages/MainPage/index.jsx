@@ -6,6 +6,7 @@ import Card from '../../components/Card'
 const newsArray = [{
   id: 1,
   creator: {
+    id: 'sofa',
     avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
     userName: 'mr__Popug96',
   },
@@ -33,6 +34,7 @@ const newsArray = [{
 {
   id: 2,
   creator: {
+    id: 'qweqwe',
     avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
     userName: 'Sofi__Loren98',
   },

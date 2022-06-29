@@ -19,7 +19,6 @@ export const getDateString = (createdAt) => {
     const hours = createdAtDate.getHours()
     const minutes = createdAtDate.getMinutes()
     const month = createdAtDate.getMonth()
-    console.log(months[month])
     const dateText = `${date} ${months[month]} ${hours}:${minutes}`
 
     return dateText
@@ -29,3 +28,9 @@ export const getDateString = (createdAt) => {
 }
 
 export const getClassNames = (...classNames) => classNames.filter((item) => Boolean(item)).join(' ')
+
+export const getCurrentUser = () => {
+  const user = localStorage.getItem('user')
+  const parsedUser = JSON.parse(user)
+  return parsedUser
+}

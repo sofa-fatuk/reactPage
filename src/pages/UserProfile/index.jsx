@@ -1,63 +1,105 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+
 import Header from '../../components/Header'
 import UserBar from '../../components/User'
-import { getClassNames } from '../../helpers'
+import EditIcon from '../../components/Svgs/Edit'
+import { getClassNames, getDateString, getCurrentUser } from '../../helpers'
+
 import classes from './style.module.css'
 
+const getUser = (id) => (id === 'sofa' || id === 'alex') && ({
+  id,
+  avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
+  userName: 'mr__Popug96',
+  userNickname: 'Сookie',
+  tags: [
+    {
+      value: 'tag_1',
+      color: 'gray',
+    },
+  ],
+  createdAt: '2010-01-06T14:48:00.000Z',
+  activeTime: '2022-06-23T10:40:00.000Z',
+  ratingCounter: 54.5,
+  karmaCounter: 143,
+  mainRaiting: 32,
+  text: 'Занимаюсь разрушением замков и человеческих судеб, профессионально',
+})
+
 function UserProfile() {
+  const params = useParams()
+  const user = getUser(params.id)
+  const currentUser = getCurrentUser()
+  const showEdit = currentUser.id === user.id
+  // взять текущего юзера из localStorage
+  // сравнить его с юзером страницы
   return (
-    <div>
+    <>
       <Header />
-      <div className={classes.userPage}>
-        <div className={classes.container}>
-          <div className={classes.user}>
-            <div className={classes.avatar}>
-              <UserBar
-                height={50}
-                width={50}
-                src="https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png"
-              />
-              <div className={classes.user__counter}>
-                <p className={getClassNames(classes.user__karma, classes.number)}>143</p>
-                <p className={getClassNames(classes.user__karma, classes.text)}>Карма</p>
-              </div>
-              <div className={classes.user__counter}>
-                <p className={getClassNames(classes.user__raiting, classes.number)}>54.5</p>
-                <p className={getClassNames(classes.user__raiting, classes.text)}>Рейтинг</p>
+      {!user
+        ? <div>Пользователя неть</div>
+        : (
+          <div className={classes.userPage}>
+            <div className={classes.container}>
+              <div className={classes.user}>
+                <div className={classes.avatar}>
+                  <UserBar
+                    height={50}
+                    width={50}
+                    src={user.avatarUrl}
+                  />
+                  <div className={classes.user__counter}>
+                    <p className={getClassNames(classes.user__karma, classes.number)}>
+                      {user.karmaCounter}
+                    </p>
+                    <p className={getClassNames(classes.user__karma, classes.text)}>Карма</p>
+                  </div>
+                  <div className={classes.user__counter}>
+                    <p className={getClassNames(classes.user__rating, classes.number)}>
+                      {user.ratingCounter}
+                    </p>
+                    <p className={getClassNames(classes.user__rating, classes.text)}>Рейтинг</p>
+                  </div>
+                  <div className={classes.edit__img}>
+                    {showEdit && <EditIcon />}
+                  </div>
+                </div>
+                <div className={classes.nameBar}>
+                  <h2 className={classes.user__name}>{user.userName}</h2>
+                  <span className={getClassNames(classes.user__name, classes.nickname)}>
+                    {user.userNickname}
+                  </span>
+                </div>
+                <div className={classes.user__about}>
+                  <h4>О себе:</h4>
+                  <div
+                    className={classes.user__text}
+                    dangerouslySetInnerHTML={{ __html: user.text }}
+                  />
+                </div>
               </div>
             </div>
-            <div className={classes.nameBar}>
-              <h2 className={classes.user__name}>Sofi__Loren98</h2>
-              <span className={getClassNames(classes.user__name, classes.nickname)}>Сookie</span>
-            </div>
-            <div className={classes.user__about}>
-              <h4>О себе:</h4>
-              <p>
-                Занимаюсь разрушением замков и человеческих судеб, профессионально
-              </p>
+            <div className={classes.infoBox}>
+              <h1 className={classes.infoBox__title}>Информейшн</h1>
+              <ul className={classes.infoBox__list}>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>В рейтинге</p>
+                  <p className={classes.infoBox__info}>{`${user.mainRaiting}-ой`}</p>
+                </li>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>Зарегистрирован</p>
+                  <p className={classes.infoBox__info}>{getDateString(user.createdAt)}</p>
+                </li>
+                <li className={classes.infoBox__item}>
+                  <p className={classes.infoBox__name}>Активность</p>
+                  <p className={classes.infoBox__info}>{getDateString(user.activeTime)}</p>
+                </li>
+              </ul>
             </div>
           </div>
-        </div>
-        <div className={classes.info}>
-          <h4 className={classes.title}>Информейшн</h4>
-          <ul className={classes.table__list}>
-            <li className={classes.table__item}>
-              <p className={classes.table__name}>В рейтинге</p>
-              <p className={classes.table__info}>36-й</p>
-            </li>
-            <li className={classes.table__item}>
-              <p className={classes.table__name}>Зарегистрирован</p>
-              <p className={classes.table__info}>6 января 2010</p>
-            </li>
-            <li className={classes.table__item}>
-              <p className={classes.table__name}>Активность</p>
-              <p className={classes.table__info}>сегодня в 13:29</p>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
+        )}
+    </>
   )
 }
 

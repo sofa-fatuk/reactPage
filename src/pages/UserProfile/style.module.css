@@ -17,6 +17,7 @@
 }
 
 .avatar {
+  position: relative;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -48,8 +49,15 @@
   color: #7aa600;
 }
 
-.user__raiting.number {
+.user__rating.number {
   color: #cd66cd;
+}
+
+.edit__img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
 }
 
 .nameBar > * {
@@ -69,7 +77,7 @@
   margin: 10px 0;
 }
 
-.info {
+.infoBox {
   max-width: 300px;
   width: 280px;
   background-color: #224957;
@@ -77,33 +85,35 @@
   border-radius: 10px;
 }
 
-.title {
+.infoBox__title {
+  font-size: 18px;
+  font-weight: normal;
   margin: 0;
   padding-bottom: 10px;
   border-bottom: #cbcecf solid .5px;
 }
 
-.table__list {
+.infoBox__list {
   padding: 0;
   list-style: none;
 }
 
-.table__item {
+.infoBox__item {
   display: flex;
   /* justify-content: space-between; */
 }
 
-.table__item:not(:last-child) {
+.infoBox__item:not(:last-child) {
   margin-bottom: 20px;
 }
 
-.table__name, 
-.table__info {
+.infoBox__name, 
+.infoBox__info {
   margin: 0;
   font-size: 13px;
 }
 
-.table__name {
+.infoBox__name {
   flex-basis: 130px;
   padding-right: 10px;
   font-weight: 700;
