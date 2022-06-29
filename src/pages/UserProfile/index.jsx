@@ -81,9 +81,7 @@ function UserProfile() {
               </div>
             </div>
             <div className={classes.infoBox}>
-              <div className={classes.infoBox__title}>
-                <span>Информейшн</span>
-              </div>
+              <h1 className={classes.infoBox__title}>Информейшн</h1>
               <ul className={classes.infoBox__list}>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>В рейтинге</p>
