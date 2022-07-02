@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import UserBar from '../../components/User'
@@ -32,8 +32,7 @@ function UserProfile() {
   const user = getUser(params.id)
   const currentUser = getCurrentUser()
   const showEdit = currentUser.id === user.id
-  // взять текущего юзера из localStorage
-  // сравнить его с юзером страницы
+
   return (
     <>
       <Header />
@@ -44,11 +43,13 @@ function UserProfile() {
             <div className={classes.container}>
               <div className={classes.user}>
                 <div className={classes.avatar}>
-                  <UserBar
-                    height={50}
-                    width={50}
-                    src={user.avatarUrl}
-                  />
+                  <Link to="/profile">
+                    <UserBar
+                      height={50}
+                      width={50}
+                      src={user.avatarUrl}
+                    />
+                  </Link>
                   <div className={classes.user__counter}>
                     <p className={getClassNames(classes.user__karma, classes.number)}>
                       {user.karmaCounter}
@@ -61,8 +62,10 @@ function UserProfile() {
                     </p>
                     <p className={getClassNames(classes.user__rating, classes.text)}>Рейтинг</p>
                   </div>
-                  <div className={classes.edit__img}>
-                    {showEdit && <EditIcon />}
+                  <div className={classes.edit__img} data-title="Редактирование">
+                    <Link to="/create-news">
+                      {showEdit && <EditIcon />}
+                    </Link>
                   </div>
                 </div>
                 <div className={classes.nameBar}>

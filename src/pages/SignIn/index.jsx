@@ -20,7 +20,7 @@ function SignIn() {
     event.preventDefault();
 
     const user = await signInUser({ rememberMe: check, email, password })
-    localStorage.setItem('user', JSON.stringify(user));
+    window.localStorage.setItem('user', JSON.stringify(user));
     console.log('SUBMITTED')
   }
 

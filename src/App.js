@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp'
 import MainPage from './pages/MainPage'
 import UserProfile from './pages/UserProfile'
 import ProfileEdit from './pages/ProfileEdit'
+import CreateNews from './pages/CreateNews'
 
 export function App() {
   return (
@@ -19,6 +20,7 @@ export function App() {
         <Route path="/main-page" element={<MainPage />} />
         <Route path="/users/:id" element={<UserProfile />} />
         <Route path="/profile" element={<ProfileEdit />} />
+        <Route path="/create-news" element={<CreateNews />} />
         <Route
           path="*"
           element={<div>Error</div>}

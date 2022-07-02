@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Form from '../../components/Form'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
+import EditImage from '../../components/EditImage'
 import { getClassNames } from '../../helpers'
 
 import classes from './style.module.css'
@@ -76,23 +77,13 @@ function ProfileEdit() {
               }
             />
           </div>
-          <div className={classes.avatar}>
-            <img 
-              src={imageSrc} 
-              className={classes.avatar__img}
-            />
-            <label htmlFor="userAvatar">
-              <input
-                id="userAvatar"
-                name="userAvatar"
-                onChange={(event) => {
-                  setValues({ ...values, userAvatar: event.target.files[0] })
-                }}
-                type="file"
-                accept="image/*"
-              />
-            </label>
-          </div>
+          <EditImage
+            src={imageSrc}
+            onChange={(event) => {
+              setValues({ ...values, userAvatar: event.target.files[0] })
+            }}
+          />
+
         </div>
       </div>
     </>

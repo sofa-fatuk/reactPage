@@ -1,0 +1,23 @@
+.avatar {
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.img {
+  min-width: 300px;
+  min-height: 310px;
+  max-height: 370px;
+  object-fit: cover;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  background: #224957;
+}
+
+.browse {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  color: transparent
+}

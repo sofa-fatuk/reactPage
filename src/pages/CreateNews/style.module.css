@@ -1,0 +1,51 @@
+.createNews {
+  max-width: 1100px;
+  height: 50vh;
+  margin: 0 auto;
+  margin-top: 10vh;
+}
+
+/* .container {
+  margin-top: 10vh;
+  display: flex;
+} */
+
+/* .container > * {
+  width: 50%;
+} */
+
+.avatar {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.avatar > * {
+  margin-right: 5px;
+  color: rgb(223, 222, 222);
+  font-size: 12px;
+}
+
+.text {
+  margin-top: 16px;
+}
+
+.tags__input {
+  margin-top: 16px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.tag {
+  font-size: 13px;
+  margin: 0;
+  padding: 5px 8px;
+  background-color: #224957;
+  border-radius: 5px;
+}
+
