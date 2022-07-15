@@ -18,11 +18,13 @@ function Card(props) {
     creator, createdAt, tags, text, title,
   } = item
 
+  console.log(creator);
+
   return (
     <section className={classes.card}>
       <div className={classes.article}>
         <div className={classes.userBar}>
-          <Link to={`/users/${creator.id}`}>
+          <Link to={`/users/${creator.userNickname}`}>
             <div className={classes.avatar}>
               <UserBar
                 src={creator.avatarUrl}

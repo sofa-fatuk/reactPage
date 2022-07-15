@@ -15,6 +15,7 @@ export const signUpUser = async (data) => {
     return user
   } catch (error) {
     console.error(error);
+    return null
   }
 }
 
@@ -31,5 +32,29 @@ export const signInUser = async (data) => {
     return user
   } catch (error) {
     console.error('Ошибка:', error);
+    return null
+  }
+}
+
+// /users/sofa
+
+// USER_API
+// /users
+
+export const getUser = async (userNickName) => {
+  try {
+    const getUserUrl = `${USER_API}/${userNickName}`
+    console.log(getUserUrl);
+    const response = await fetch(getUserUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const user = await response.json();
+    return user
+  } catch (error) {
+    console.error(error);
+    return null
   }
 }

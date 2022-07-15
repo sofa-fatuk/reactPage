@@ -5,6 +5,10 @@ import UserIcon from '../Svgs/User'
 import classes from './style.module.css'
 import { getCurrentUser } from '../../helpers'
 
+// Name - Sofa
+// Surname - Fatuk
+
+
 function Header() {
   const user = getCurrentUser()
 

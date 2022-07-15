@@ -1,35 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 
 import Header from '../../components/Header'
 import UserBar from '../../components/User'
 import EditIcon from '../../components/Svgs/Edit'
 import { getClassNames, getDateString, getCurrentUser } from '../../helpers'
+import { getUser } from '../../api/user'
 
 import classes from './style.module.css'
 
-const getUser = (id) => (id === 'sofa' || id === 'alex') && ({
-  id,
-  avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
-  userName: 'mr__Popug96',
-  userNickname: 'Сookie',
-  tags: [
-    {
-      value: 'tag_1',
-      color: 'gray',
-    },
-  ],
-  createdAt: '2010-01-06T14:48:00.000Z',
-  activeTime: '2022-06-23T10:40:00.000Z',
-  ratingCounter: 54.5,
-  karmaCounter: 143,
-  mainRaiting: 32,
-  text: 'Занимаюсь разрушением замков и человеческих судеб, профессионально',
-})
+// const getUser = (id) => (id === 'sofa' || id === 'alex') && ({
+//   id,
+//   avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
+//   userName: 'mr__Popug96',
+//   userNickname: 'Сookie',
+//   tags: [
+//     {
+//       value: 'tag_1',
+//       color: 'gray',
+//     },
+//   ],
+//   createdAt: '2010-01-06T14:48:00.000Z',
+//   activeTime: '2022-06-23T10:40:00.000Z',
+//   ratingCounter: 54.5,
+//   karmaCounter: 143,
+//   mainRaiting: 32,
+//   text: 'Занимаюсь разрушением замков и человеческих судеб, профессионально',
+// })
 
 function UserProfile() {
+  const [user, setUser] = useState([])
   const params = useParams()
-  const user = getUser(params.id)
+
+  useEffect(() => {
+    getUser(params.id).then((usersRes) => {
+      setUser(usersRes)
+    })
+  }, [params.id])
+  console.log('out', user);
+
   const currentUser = getCurrentUser()
   const showEdit = currentUser.id === user.id
 
@@ -88,7 +97,7 @@ function UserProfile() {
               <ul className={classes.infoBox__list}>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>В рейтинге</p>
-                  <p className={classes.infoBox__info}>{`${user.mainRaiting}-ой`}</p>
+                  <p className={classes.infoBox__info}>{user.mainRaiting}</p>
                 </li>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>Зарегистрирован</p>

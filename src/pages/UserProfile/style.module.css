@@ -16,6 +16,10 @@
   margin-right: 30px;
 }
 
+.user {
+  min-width: 550px;
+}
+
 .avatar {
   position: relative;
   display: flex;
