@@ -1,3 +1,9 @@
+<h1 align="center">Hi there, I'm <a href="https://github.com/sofa-fatuk" target="_blank">Sofa</a> 
+<img src="https://github.com/blackcater/blackcater/raw/main/images/Hi.gif" height="32"/></h1>
+<h3 align="center">Computer science student, IT news writer from Russia</h3>
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
