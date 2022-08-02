@@ -7,7 +7,6 @@ import React,
 import { Editor } from '@tinymce/tinymce-react';
 
 import Header from '../../components/Header'
-// import EditImage from '../../components/EditImage'
 import UserBar from '../../components/User'
 import Input from '../../components/Input'
 import { getDateString } from '../../helpers'
@@ -48,7 +47,6 @@ function CreateNews() {
     <>
       <Header />
       <div className={classes.createNews}>
-        {/* <div className={classes.container}> */}
         <div className={classes.new}>
           <div className={classes.userBar}>
             <div className={classes.avatar}>
@@ -101,13 +99,6 @@ function CreateNews() {
             </div>
           </div>
         </div>
-        {/* <EditImage
-            src={imageSrc}
-            onChange={(event) => {
-              setValues({ ...values, userAvatar: event.target.files[0] })
-            }}
-          />
-        </div> */}
       </div>
     </>
   )

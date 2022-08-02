@@ -21,6 +21,5 @@ Form.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   elements: PropTypes.arrayOf(PropTypes.node).isRequired,
 }
-// Прочитать про вывод массивов в реакте
 
 export default Form

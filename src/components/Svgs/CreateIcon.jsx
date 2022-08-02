@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 
-function EditIcon(props) {
+function CreateIcon(props) {
   const { width, height } = props;
 
   return (
@@ -50,14 +50,14 @@ function EditIcon(props) {
   )
 }
 
-EditIcon.propTypes = {
+CreateIcon.propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }
 
-EditIcon.defaultProps = {
+CreateIcon.defaultProps = {
   width: 40,
   height: 40,
 }
 
-export default EditIcon
+export default CreateIcon

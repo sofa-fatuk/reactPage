@@ -18,7 +18,7 @@ function Card(props) {
     creator, createdAt, tags, text, title,
   } = item
 
-  console.log(creator);
+  // console.log(creator);
 
   return (
     <section className={classes.card}>

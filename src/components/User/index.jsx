@@ -4,11 +4,11 @@ import classes from './style.module.css'
 
 function UserBar(props) {
   const {
-    src, userName, width, height,
+    src, userName, width, height, onClick,
   } = props
 
   return (
-    <div className={classes.avatar}>
+    <div role="button" tabIndex="0" className={classes.avatar} onKeyDown={onClick} onClick={onClick}>
       <img className={classes.avatar__img} style={{ width, height }} src={src} alt={`post creator ${userName} avatar`} />
       <span className={classes.user__name}>{userName}</span>
     </div>
@@ -20,6 +20,7 @@ UserBar.propTypes = {
   userName: PropTypes.string,
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  onClick: PropTypes.func,
 }
 
 UserBar.defaultProps = {
@@ -27,6 +28,7 @@ UserBar.defaultProps = {
   src: null,
   width: 20,
   height: 20,
+  onClick: () => {},
 }
 
 export default UserBar

@@ -1,46 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import {
+  useParams,
+  Link,
+  useNavigate,
+} from 'react-router-dom'
 
 import Header from '../../components/Header'
 import UserBar from '../../components/User'
-import EditIcon from '../../components/Svgs/Edit'
+import CreateIcon from '../../components/Svgs/CreateIcon'
 import { getClassNames, getDateString, getCurrentUser } from '../../helpers'
 import { getUser } from '../../api/user'
 
 import classes from './style.module.css'
 
-// const getUser = (id) => (id === 'sofa' || id === 'alex') && ({
-//   id,
-//   avatarUrl: 'https://habrastorage.org/getpro/habr/avatars/f55/eba/556/f55eba556d44f143a2af69452d2c2d03.png',
-//   userName: 'mr__Popug96',
-//   userNickname: 'Сookie',
-//   tags: [
-//     {
-//       value: 'tag_1',
-//       color: 'gray',
-//     },
-//   ],
-//   createdAt: '2010-01-06T14:48:00.000Z',
-//   activeTime: '2022-06-23T10:40:00.000Z',
-//   ratingCounter: 54.5,
-//   karmaCounter: 143,
-//   mainRaiting: 32,
-//   text: 'Занимаюсь разрушением замков и человеческих судеб, профессионально',
-// })
-
 function UserProfile() {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState({})
   const params = useParams()
+  const navigate = useNavigate();
+
+  const currentUser = getCurrentUser()
+  const isCurrentUser = currentUser && currentUser.id === user.id
 
   useEffect(() => {
     getUser(params.id).then((usersRes) => {
       setUser(usersRes)
     })
   }, [params.id])
-  console.log('out', user);
+  // console.log('out', user);
 
-  const currentUser = getCurrentUser()
-  const showEdit = currentUser.id === user.id
+  const onClickUserBar = () => {
+    if (isCurrentUser) {
+      navigate('/edit-profile')
+    }
+  }
 
   return (
     <>
@@ -52,29 +44,31 @@ function UserProfile() {
             <div className={classes.container}>
               <div className={classes.user}>
                 <div className={classes.avatar}>
-                  <Link to="/profile">
-                    <UserBar
-                      height={50}
-                      width={50}
-                      src={user.avatarUrl}
-                    />
-                  </Link>
+                  <UserBar
+                    onClick={onClickUserBar}
+                    height={50}
+                    width={50}
+                    src={user.avatarUrl}
+                  />
                   <div className={classes.user__counter}>
                     <p className={getClassNames(classes.user__karma, classes.number)}>
-                      {user.karmaCounter}
+                      {user.karma}
                     </p>
                     <p className={getClassNames(classes.user__karma, classes.text)}>Карма</p>
                   </div>
                   <div className={classes.user__counter}>
                     <p className={getClassNames(classes.user__rating, classes.number)}>
-                      {user.ratingCounter}
+                      {user.rating}
                     </p>
                     <p className={getClassNames(classes.user__rating, classes.text)}>Рейтинг</p>
                   </div>
                   <div className={classes.edit__img} data-title="Редактирование">
+                    {isCurrentUser
+                    && (
                     <Link to="/create-news">
-                      {showEdit && <EditIcon />}
+                      <CreateIcon />
                     </Link>
+                    )}
                   </div>
                 </div>
                 <div className={classes.nameBar}>
@@ -87,7 +81,7 @@ function UserProfile() {
                   <h4>О себе:</h4>
                   <div
                     className={classes.user__text}
-                    dangerouslySetInnerHTML={{ __html: user.text }}
+                    dangerouslySetInnerHTML={{ __html: user.description }}
                   />
                 </div>
               </div>
@@ -97,7 +91,7 @@ function UserProfile() {
               <ul className={classes.infoBox__list}>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>В рейтинге</p>
-                  <p className={classes.infoBox__info}>{user.mainRaiting}</p>
+                  <p className={classes.infoBox__info}>{`${user.mainRating}-й`}</p>
                 </li>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>Зарегистрирован</p>
@@ -105,7 +99,7 @@ function UserProfile() {
                 </li>
                 <li className={classes.infoBox__item}>
                   <p className={classes.infoBox__name}>Активность</p>
-                  <p className={classes.infoBox__info}>{getDateString(user.activeTime)}</p>
+                  <p className={classes.infoBox__info}>{getDateString(user.lastActivityAt)}</p>
                 </li>
               </ul>
             </div>

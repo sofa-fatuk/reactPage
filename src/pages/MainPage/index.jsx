@@ -12,7 +12,6 @@ function MainPage() {
       setNews(newsRes)
     })
   }, [])
-  console.log('out', news);
 
   return (
     <div className={classes.mainPage}>

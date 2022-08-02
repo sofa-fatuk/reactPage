@@ -1,4 +1,4 @@
-import './App.css'
+import React from 'react';
 import {
   BrowserRouter,
   Routes,
@@ -11,15 +11,17 @@ import UserProfile from './pages/UserProfile'
 import ProfileEdit from './pages/ProfileEdit'
 import CreateNews from './pages/CreateNews'
 
-export function App() {
+import './App.css'
+
+export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<SignIn />} />
+        <Route path="/" element={<SignIn title="title" />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/main-page" element={<MainPage />} />
         <Route path="/users/:id" element={<UserProfile />} />
-        <Route path="/profile" element={<ProfileEdit />} />
+        <Route path="/edit-profile" element={<ProfileEdit />} />
         <Route path="/create-news" element={<CreateNews />} />
         <Route
           path="*"

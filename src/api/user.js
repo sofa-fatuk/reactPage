@@ -1,5 +1,6 @@
 import {
   USER_API,
+  LOGIN_URL,
 } from './constants'
 
 export const signUpUser = async (data) => {
@@ -21,15 +22,23 @@ export const signUpUser = async (data) => {
 
 export const signInUser = async (data) => {
   try {
-    const response = await fetch(USER_API, {
+    const response = await fetch(LOGIN_URL, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    const user = await response.json();
-    return user
+    const body = await response.json();
+
+    // response.status
+    const { status } = response
+
+    if (status === 200) {
+      return body // user
+    }
+
+    throw Error(body.errorMessage)
   } catch (error) {
     console.error('Ошибка:', error);
     return null

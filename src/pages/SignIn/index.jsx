@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import Form from '../../components/Form'
@@ -7,20 +8,26 @@ import { signInUser } from '../../api/user'
 import classes from '../../styles/shared.module.css'
 
 function SignIn() {
-  const [email, setEmail] = useState('');
+  const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
   const [check, setCheck] = useState(false)
+  const navigate = useNavigate();
 
   const onChangeEmail = (event) => {
     const { target: { value = '' } } = event
-    setEmail(value);
+    setNickName(value);
   }
 
   const onSubmit = async (event) => {
     event.preventDefault();
 
-    const user = await signInUser({ rememberMe: check, email, password })
-    window.localStorage.setItem('user', JSON.stringify(user));
+    const user = await signInUser({ rememberMe: check, userNickname: nickName, password })
+
+    console.log(user)
+    localStorage.setItem('user', JSON.stringify(user));
+    if (user) {
+      navigate('/main-page');
+    }
     console.log('SUBMITTED')
   }
 
@@ -43,9 +50,8 @@ function SignIn() {
         elements={
           [<Input
             placeholder="Login"
-            type="email"
             onChange={onChangeEmail}
-            value={email}
+            value={nickName}
             required
           />,
             <Input
@@ -62,21 +68,10 @@ function SignIn() {
             <Button
               type="submit"
               value="Login"
-            />]
+            />,
+          ]
         }
       />
-      {/*
-        <label className={classes.controls}>
-          <div className={classes.check}>
-            <input
-              value={check}
-              type="checkbox"
-              onClick={onCheck}
-            />
-            Remember me
-          </div>
-        </label>
-       */}
     </div>
   )
 }

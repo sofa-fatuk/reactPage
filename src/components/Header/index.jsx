@@ -5,10 +5,6 @@ import UserIcon from '../Svgs/User'
 import classes from './style.module.css'
 import { getCurrentUser } from '../../helpers'
 
-// Name - Sofa
-// Surname - Fatuk
-
-
 function Header() {
   const user = getCurrentUser()
 
@@ -24,11 +20,13 @@ function Header() {
           <div className={classes.search__img}>
             <SearchIcon />
           </div>
+
           <div className={classes.user__img}>
-            <Link to={`/users/${user.id}`}>
+            <Link to={user ? `/users/${user.userNickname}` : '/sign-up  '}>
               <UserIcon />
             </Link>
           </div>
+
         </div>
       </div>
     </header>

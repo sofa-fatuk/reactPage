@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import classes from './style.module.css'
 
 function Input(props) {
-  // console.log(props);
   const {
     className, hasError, errorMessage, ...rest
   } = props;

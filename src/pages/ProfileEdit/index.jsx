@@ -5,6 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Form from '../../components/Form'
 import Header from '../../components/Header'
 import Input from '../../components/Input'
+import Button from '../../components/Button'
 import EditImage from '../../components/EditImage'
 import { getClassNames } from '../../helpers'
 
@@ -24,7 +25,9 @@ function ProfileEdit() {
     setValues({ ...values, [name]: value })
   }
 
-  const onSubmit = () => { }
+  const onSubmit = (event) => {
+    event.preventDefault();
+  }
 
   const imageSrc = values.userAvatar && URL.createObjectURL(values.userAvatar);
 
@@ -42,14 +45,14 @@ function ProfileEdit() {
                 [
                   <Input
                     name="userName"
-                    placeholder="Имя"
+                    placeholder="Настоящее имя"
                     type="text"
                     onChange={onChange}
                     value={values.userName}
                   />,
                   <Input
                     name="userNickName"
-                    placeholder="Кликуха"
+                    placeholder="Ник"
                     type="text"
                     onChange={onChange}
                     value={values.userNickName}
@@ -72,6 +75,10 @@ function ProfileEdit() {
                     onChange={(date) => {
                       setValues({ ...values, birthday: date })
                     }}
+                  />,
+                  <Button
+                    type="submit"
+                    value="Save changes"
                   />,
                 ]
               }

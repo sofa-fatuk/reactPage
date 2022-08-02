@@ -1,4 +1,5 @@
 .avatar {
+  padding: 16px;
   max-width: 400px;
   display: flex;
   flex-direction: column;
@@ -6,12 +7,12 @@
 }
 
 .img {
-  min-width: 300px;
+  min-width: 300px; 
+  max-width: 300px;
   min-height: 310px;
   max-height: 370px;
   object-fit: cover;
   margin: 0 auto;
-  margin-bottom: 10px;
   background: #224957;
 }
 
